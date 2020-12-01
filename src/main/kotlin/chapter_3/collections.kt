@@ -1,5 +1,8 @@
 package chapter_3
 
+import chapter_3.strings.lastChar as last
+import chapter_3.strings.*
+
 fun main(){
     var set = hashSetOf(1, 7, 5)
     var list = arrayListOf(1, 7, 5)
@@ -10,22 +13,20 @@ fun main(){
     println(set.max())
 
     println(list)
-    println(joinToString(list, "; ", "(", ")"))
-}
-fun <T> joinToString(
-        collection: Collection<T>,
-        separator: String,
-        prefix: String,
-        postfix: String
-) : String{
-    val result = StringBuilder(prefix)
-    for((index, element) in collection.withIndex()){
-        if (index > 0) result.append(separator)
-        result.append(element)
-    }
+    println(list.joinToString("; ", "(", ")"))
+    println(list.joinToString())
+    println(list.joinToString(prefix = "#"))
 
+    reportOperationCount()
 
+    println("Kotlin".last()) // like function
+    println("Kotlin".last) // like property
+    val sb = StringBuilder("Kotlin?")
+    sb.last = '!'
+    println(sb)
 
-    result.append(postfix)
-    return result.toString()
+    val view: View = Button()
+    view.click() // override
+    view.showOff() // not override
+
 }
