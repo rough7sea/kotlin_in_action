@@ -7,10 +7,11 @@ fun main(){
     var set = hashSetOf(1, 7, 5)
     var list = arrayListOf(1, 7, 5)
     var map = hashMapOf(1 to "one", 7 to "seven", 53 to "fifty-three")
-
+    // 1.to("one") the same
+    // 1 to "some" -> инфиксная форма записи
 
     println(list.last())
-    println(set.max())
+    println(set.maxOrNull())
 
     println(list)
     println(list.joinToString("; ", "(", ")"))
@@ -30,3 +31,5 @@ fun main(){
     view.showOff() // not override
 
 }
+
+infix fun Any.to(other: Any) = Pair(this, other)
