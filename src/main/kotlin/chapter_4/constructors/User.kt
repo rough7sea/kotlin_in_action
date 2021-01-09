@@ -25,3 +25,14 @@ fun main(){
 }
 
 class Secretive private constructor() // can't create constructor outside
+
+//class MyButton : View {
+//    constructor(ctx: Context)
+//    : super (ctx) {
+//        // some code
+//    }
+//      constructor(ctx: Context, attr: AttributeSet)
+//      : this (ctx){
+//          // some code
+//      }
+//}
