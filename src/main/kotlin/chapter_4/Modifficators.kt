@@ -27,3 +27,11 @@ internal open class TalkativeButton : Focusable{
 //    yell() // error - private!
 //    whisper() // error - protected!
 //}
+
+class LengthCounter{
+    var counter: Int = 0 // can't be set outside
+    private set
+    fun addWord(word: String){
+        counter += word.length
+    }
+}
