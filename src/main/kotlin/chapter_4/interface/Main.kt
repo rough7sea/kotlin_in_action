@@ -11,13 +11,13 @@ class SubscribingUser(val email: String) : User{
     get() = email.substringBefore('@')
 }
 
-class FacebookUser(val accountId: Int) : User {
+class FacebookUser(accountId: Int) : User {
     override val nickname = getFacebookName(accountId)
 
-    private fun getFacebookName(accountId: Int) : String{
-        // do something
-        return "111"
-    }
+}
+fun getFacebookName(accountId: Int) : String{
+    // do something
+    return "111"
 }
 
 fun main() {
