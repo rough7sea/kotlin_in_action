@@ -1,6 +1,7 @@
 package chapter_4.`object`.compamion
 
 import chapter_4.`interface`.getFacebookName
+import com.beust.klaxon.Klaxon
 
 class A {
     companion object{
@@ -32,6 +33,13 @@ class User private constructor(val nickname: String){
     }
 }
 
+private class Person (val name: String){
+    companion object Loader {
+        fun fromJSON(jsonText: String): Person {
+            return Klaxon().parse<Person>(jsonText)!! // very low performance
+        }
+    }
+}
 
 
 fun main() {
@@ -39,4 +47,10 @@ fun main() {
     val subscribingUser = User.newSubscribingUser("bob@gmail.com")
     val facebookUser = User.newFacebookUser(4)
     println(subscribingUser.nickname)
+
+    var person = Person.fromJSON("""{"name": "Klaus"}""")
+    println(person.name)
+
+    person = Person.Loader.fromJSON("""{"name": "Brent"}""")
+    println(person.name)
 }

@@ -9,6 +9,7 @@ version = "1.0"
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 tasks.withType<KotlinCompile>() {
@@ -16,4 +17,9 @@ tasks.withType<KotlinCompile>() {
 }
 application {
     mainClassName = "MainKt"
+}
+
+
+dependencies {
+    implementation("com.beust:klaxon:5.0.1")
 }
