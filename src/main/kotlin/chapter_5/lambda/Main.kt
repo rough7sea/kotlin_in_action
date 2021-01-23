@@ -26,7 +26,13 @@ fun main() {
     people.maxByOrNull(getAge) // no context to extract parameter
 
     var sum = { x: Int, y: Int -> x + y}
-    println(sum(3, 4));
+    println(sum(3, 4))
+
+    sum = {x: Int, y: Int ->
+        println("Computing the sum of $x and $y . . . ")
+        x + y
+    }
+    println(sum(3, 5));
 
     { println(42) }() // call lambda directly
     run { println(42) } // call lambda directly
@@ -36,9 +42,5 @@ fun main() {
     names = people.joinToString(" ") { it.name }
     println(names)
 
-    sum = {x: Int, y: Int ->
-        println("Computing the sum of $x and $y . . . ")
-        x + y
-    }
-    println(sum(3, 5))
+
 }
