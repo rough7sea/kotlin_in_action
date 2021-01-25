@@ -10,6 +10,8 @@ fun main(args: Array<String>) {
     println(max(1, 3))
     println(createRandomPerson().name)
     println(createRandomPerson().isSquare)
+
+    println(KotlinVersion.CURRENT)
 }
 
 fun max (a : Int, b: Int): Int{

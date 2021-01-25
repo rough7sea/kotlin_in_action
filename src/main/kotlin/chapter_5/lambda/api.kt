@@ -31,4 +31,50 @@ fun main() {
         Book("book 3", listOf("author 3", "author 1")))
     println(books.flatMap(Book::author).toSet())
     println(books.map(Book::author).toSet())
+
+    val toList = people.asSequence()
+        .map(Person::name)
+        .filter { it.startsWith("A") }
+        .toList()
+
+    benchmark()
+
+}
+
+fun benchmark(){
+    val people = mutableListOf<Person>()
+    for(i in 0..1000){
+        people.add(i, Person("Alice_$i", i))
+    }
+
+    val test1 = { // faster than first one in case large amount of elements
+            p: List<Person> ->
+        p.asSequence()
+            .map(Person::name)
+            .filter { it.startsWith("A") }
+            .toList()
+    }
+
+    val test2 = {
+            p: List<Person> ->
+        p.map(Person::name)
+            .filter { it.startsWith("A") }
+    }
+
+
+    test(people, test1)
+    test(people, test2)
+
+}
+
+fun test(people: List<Person>, test: (List<Person>) -> List<String>){
+    var time = System.currentTimeMillis()
+
+    for (i in 1..100000){
+        test(people)
+    }
+
+    time = System.currentTimeMillis() - time
+
+    println("test time = $time ms")
 }
