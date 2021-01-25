@@ -1,5 +1,7 @@
 package chapter_5.lambda
 
+import java.io.File
+
 class Book(val title: String, val author: List<String>)
 
 fun main() {
@@ -38,6 +40,13 @@ fun main() {
         .toList()
 
     benchmark()
+
+    val naturalNumber = generateSequence(0) { it + 1}  // deferred call
+    val numberTo100 = naturalNumber.takeWhile { it <= 100 } // deferred call
+    println(numberTo100.sum())
+
+    val file = File("src/main/kotlin/chapter_5/lambda/api.kt")
+    println(file.isHiddenDirectory())
 
 }
 
@@ -78,3 +87,6 @@ fun test(people: List<Person>, test: (List<Person>) -> List<String>){
 
     println("test time = $time ms")
 }
+
+fun File.isHiddenDirectory() =
+    generateSequence(this) { it.parentFile }.any { it.isHidden }
