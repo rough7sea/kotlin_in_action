@@ -48,6 +48,8 @@ fun main() {
     val file = File("src/main/kotlin/chapter_5/lambda/api.kt")
     println(file.isHiddenDirectory())
 
+    createAllDoneRunnable().run()
+
 }
 
 fun benchmark(){
@@ -90,3 +92,7 @@ fun test(people: List<Person>, test: (List<Person>) -> List<String>){
 
 fun File.isHiddenDirectory() =
     generateSequence(this) { it.parentFile }.any { it.isHidden }
+
+fun createAllDoneRunnable(): Runnable { // SAM-constructor
+    return Runnable { println("All done!") }
+}
