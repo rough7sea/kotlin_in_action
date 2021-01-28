@@ -1,5 +1,12 @@
 package chapter_6
 
+import org.junit.Assert
+import org.junit.Before
+import org.junit.Test
+import java.awt.event.ActionEvent
+import javax.swing.AbstractAction
+import javax.swing.JList
+
 fun strLen(s: String) = s.length
 fun strLenSafe(s: String?): Int = s?.length ?: 0
 
@@ -21,8 +28,8 @@ class Address(val streetAddress: String, val zipcode: Int,
 class Company(val name: String, val address: Address?)
 
 class Person(
-    private val firstName: String,
-    private val lastName: String = "",
+    val firstName: String,
+    val lastName: String = "",
     val company: Company?){
     override fun equals(other: Any?): Boolean {
         val otherPerson = other as? Person ?: return false
@@ -47,6 +54,11 @@ fun printShippingLabel(person: Person){
         println(streetAddress)
         println("$zipcode $city, $country")
     }
+}
+
+fun ignoreNulls(s: String?){
+    val sNotNull: String = s!! // if null throw exception
+    println(sNotNull.length)
 }
 
 fun main() {
@@ -79,4 +91,31 @@ fun main() {
     println(person == Person("Jeff", company = null))
     println(person.equals(33))
 
+    var email: String? = "my_email@cool.com"
+    email?.let { sendEmailTo(it) }
+    email = null
+    email?.let { sendEmailTo(it) } // do nothing
+
+    getTheBestPersonInTheWorld()?.let { sendEmailTo(it.firstName) }
+
+}
+
+class CopyRowAction(val list: JList<String>): AbstractAction(){
+    override fun isEnabled(): Boolean =
+        list.selectedValue != null
+
+    override fun actionPerformed(e: ActionEvent?) {
+        val value = list.selectedValue!!
+        // do something
+    }
+}
+
+fun sendEmailTo(email: String){
+    println("Sending email to $email")
+}
+
+fun getTheBestPersonInTheWorld(): Person? = null
+
+class MyService{
+    fun performAction(): String = "foo"
 }
