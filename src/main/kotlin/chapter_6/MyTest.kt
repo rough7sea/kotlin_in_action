@@ -19,3 +19,7 @@ class MyTest{
     }
 
 }
+
+class MyService{
+    fun performAction(): String = "foo"
+}

@@ -1,8 +1,5 @@
 package chapter_6
 
-import org.junit.Assert
-import org.junit.Before
-import org.junit.Test
 import java.awt.event.ActionEvent
 import javax.swing.AbstractAction
 import javax.swing.JList
@@ -98,6 +95,12 @@ fun main() {
 
     getTheBestPersonInTheWorld()?.let { sendEmailTo(it.firstName) }
 
+    verifyUserInput(" ")
+    verifyUserInput(null)
+
+    printHashcode(null)
+//    printHashCodeNotNull(null) can't be null
+
 }
 
 class CopyRowAction(val list: JList<String>): AbstractAction(){
@@ -116,6 +119,16 @@ fun sendEmailTo(email: String){
 
 fun getTheBestPersonInTheWorld(): Person? = null
 
-class MyService{
-    fun performAction(): String = "foo"
+fun verifyUserInput(input: String?){
+    if (input.isNullOrBlank()){
+        println("Please fill in the required fields")
+    }
+}
+
+fun <T> printHashcode(t: T){
+    println(t?.hashCode())
+}
+
+fun <T: Any> printHashCodeNotNull(t: T){
+    println(t.hashCode())
 }
