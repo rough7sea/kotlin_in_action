@@ -22,6 +22,10 @@ class NoResultProcessor: Processor<Unit>{ // Unit = void
     }
 }
 
+fun fail (message: String): Nothing{
+    throw IllegalArgumentException(message)
+}
+
 fun main() {
     showProgress(146)
     println(Person1("Sam", 35).isOlderThan(Person1("Amy", 42)))
