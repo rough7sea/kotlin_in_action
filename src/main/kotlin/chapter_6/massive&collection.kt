@@ -32,4 +32,16 @@ fun main() {
 
     copyElements(source, target)
     println(target)
+
+    val letters = Array(26) { i -> ('a' + i).toString()}
+    println(letters.joinToString(""))
+
+    val strings = listOf("a", "b", "c")
+    println("%s/%s/%s".format(*strings.toTypedArray()))
+
+    val fiveZeros = IntArray(5) // the same
+    val fiveZerosToo = intArrayOf(0, 0, 0, 0, 0)  // the same
+
+    val squares = IntArray(5) { i -> (i + 1) * (i + 1)}
+    println(squares.joinToString())
 }
