@@ -16,18 +16,20 @@ open class Animal {
     fun feed() { }
 }
 
-//class Herd<out T : Animal>{
-//    private val animals = mutableListOf<T>()
-//    val size: Int get() = animals.size
-//    operator fun get(i: Int): T { return animals[i] }
-//}
-
-class Herd<Animal>{
-    private val animals = mutableListOf<Animal>()
+class Herd<out T : Animal>{
+    private val animals = mutableListOf<T>()
     val size: Int get() = animals.size
-    operator fun get(i: Int): Animal { return animals[i] }
-    operator fun add(animal: Animal) {}
+    operator fun get(i: Int): T { return animals[i] }
 }
+
+//class Herd<out T : Animal>{
+//    private val animals = mutableListOf<Animal>()
+//    val size: Int get() = animals.size
+//    operator fun get(i: Int): Animal { return animals[i] }
+////    operator fun set(i: Int, animal: Animal) {
+////        animals[i] = animal
+////    }
+//}
 
 fun feedAll(animals: Herd<Animal>){
     for (i in 0 until animals.size){
@@ -53,3 +55,7 @@ fun main() {
     val strings = mutableListOf("abc", "bac")
 //    addAnswer(strings) //
 }
+
+fun enumeratedCats(f: (Cat) -> Number) {}
+
+fun Animal.getIndex(): Int = 43
