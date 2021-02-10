@@ -29,4 +29,5 @@ fun main() {
 
     val memberProperty = Person4::age
     println("Person age = ${memberProperty.get(person)}")
+
 }
