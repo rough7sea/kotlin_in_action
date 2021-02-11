@@ -19,6 +19,7 @@ fun main() {
     val kFunction = ::foo
     kFunction.call(42)
 
+    val  fun2 = ::foo
     val kFun = ::sum
     println(kFun.invoke(1, 2) + kFun(3, 4))
 
