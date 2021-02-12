@@ -22,6 +22,10 @@ tasks.withType<KotlinCompile>() {
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
     implementation("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.7.2")
+//    implementation("org.jetbrains.kotlinx:kotlinx-html-js:${kotlinxHtmlVersion}")
+
     implementation("com.beust:klaxon:5.0.1")
     implementation("junit:junit:4.12")
     implementation("com.github.yole:jkid:ec66c0b13c")
