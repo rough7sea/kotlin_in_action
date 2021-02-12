@@ -5,6 +5,7 @@ plugins {
     application
 }
 val kotlinVersion = "1.4.21"
+val exposedVersion = "0.29.1"
 group = "com.roughsea"
 version = "1.0"
 
@@ -20,6 +21,11 @@ tasks.withType<KotlinCompile>() {
 
 
 dependencies {
+
+    implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
+
     implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
     implementation("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
 
@@ -34,5 +40,6 @@ dependencies {
 //        ,
 //        "org.junit.jupiter:junit-jupiter-api:5.4.2"
     )
+    testImplementation("io.kotlintest:kotlintest-runner-junit5:3.1.9")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.4.2")
 }
